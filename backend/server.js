@@ -25,9 +25,25 @@ const dbName = process.env.DB_NAME;
 const app = express();
 const port = process.env.PORT || 3000; // Use port from environment variables or default to 3000
 
+const generateStrongPassword = () => {
+  const length = 12;
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+  let password = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    password += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return password;
+};
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+
+// Endpoint to generate a strong password
+app.get("/generate-password", (req, res) => {
+  const password = generateStrongPassword();
+  res.status(200).json({ success: true, password });
+});
 
 // Get all the passwords
 app.get("/", async (req, res) => {
@@ -102,3 +118,4 @@ app.delete("/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`PassOP server listening on http://localhost:${port}`);
 });
+

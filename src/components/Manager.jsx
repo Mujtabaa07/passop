@@ -38,13 +38,56 @@ const Manager = () => {
     navigator.clipboard.writeText(text);
   };
 
-  const showPassword = () => {
-    passwordRef.current.type =
-      passwordRef.current.type === "password" ? "text" : "password";
-    ref.current.src =
-      passwordRef.current.type === "password"
-        ? "icons/eye.png"
-        : "icons/eyecross.png";
+const showPassword = () => {
+  passwordRef.current.type =
+    passwordRef.current.type === "password" ? "text" : "password";
+  ref.current.src =
+    passwordRef.current.type === "password"
+      ? "icons/eye.png"
+      : "icons/eyecross.png";
+};
+
+// Function to generate a strong password
+const generateStrongPassword = () => {
+  const length = 12;
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+  let password = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    password += charset.charAt(Math.floor(Math.random() * n));
+  }
+  setForm({ ...form, password });
+  toast("Strong password generated!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+};
+
+// Function to generate a strong password
+const generateStrongPassword = () => {
+  const length = 12;
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+  let password = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    password += charset.charAt(Math.floor(Math.random() * n));
+  }
+  setForm({ ...form, password });
+  toast("Strong password generated!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+};
   };
 
   const savePassword = async () => {
@@ -202,17 +245,40 @@ const Manager = () => {
               </span>
             </div>
           </div>
-          <button
-            onClick={savePassword}
-            className="flex justify-center items-center gap-2 bg-green-500 hover:bg-green-600 rounded-full px-8 py-2 w-fit border border-green-900"
-          >
-            <lord-icon
-              src="https://cdn.lordicon.com/jgnvfzqg.json"
-              trigger="hover"
-            ></lord-icon>
-            Save
-          </button>
-        </div>
+          <div className="flex gap-4">
+            <button
+              onClick={generateStrongPassword}
+              className="flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-full px-8 py-2 w-fit border border-blue-900"
+            >
+              <lord-icon
+                src="https://cdn.lordicon.com/jvucoldz.json"
+                trigger="hover"
+              ></lord-icon>
+              Generate Password
+            </button>
+            <div className="flex gap-4">
+              <button
+                onClick={generateStrongPassword}
+                className="flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 rounded-full px-8 py-2 w-fit border border-blue-900"
+              >
+                <lord-icon
+                  src="https://cdn.lordicon.com/jvucoldz.json"
+                  trigger="hover"
+                ></lord-icon>
+                Generate Password
+              </button>
+              <button
+                onClick={savePassword}
+                className="flex justify-center items-center gap-2 bg-green-500 hover:bg-green-600 rounded-full px-8 py-2 w-fit border border-green-900"
+              >
+                <lord-icon
+                  src="https://cdn.lordicon.com/jgnvfzqg.json"
+                  trigger="hover"
+                ></lord-icon>
+                Save
+              </button>
+            </div>
+          </div>
 
         <div className="passwords">
           <h2 className="font-bold text-2xl py-4">Your Passwords</h2>
@@ -342,3 +408,4 @@ const Manager = () => {
 };
 
 export default Manager;
+

@@ -17,6 +17,7 @@
 <ul>
   <li>🔒 **<b>PassOP</b>** is a simple and secure password manager built with React that allows users to save, view, edit, and delete their passwords.</li>
   <li>💡 It helps you manage your passwords efficiently and securely using modern encryption techniques.</li>
+  <li>🔑 <b>Generate Strong Password</b>: Automatically generate a strong password with a mix of characters.</li>
 </ul>
 
 <h2><img src = "https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width = 30px height="38"> Features</h2>
@@ -103,7 +104,11 @@ npm install
 npm run dev
 ```
 
-#### 4. Access the Application:
+#### 4. Generate a Strong Password:
+
+- To generate a strong password, click the "Generate Password" button in the application. This will automatically fill the password field with a randomly generated strong password.
+
+#### 5. Access the Application:
 
 - Open your browser and go to:
   [http://localhost:3000](http://localhost:3000)
@@ -155,3 +160,4 @@ Big thanks to all the contributors who have helped make Passop a better platform
 <a href="https://github.com/jinx-vi-0/passop/graphs/contributors"> <img align="center" src="https://contrib.rocks/image?max=100&repo=jinx-vi-0/passop"/> </a> 
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/badge/Move%20to%20top-Blue?style=plastic" alt="Back To Top"></a></p>
+
